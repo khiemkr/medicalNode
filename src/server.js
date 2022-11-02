@@ -14,6 +14,9 @@ const doctorTimeRouter = require('./controllers/DoctorTimeRouter')
 const BookingRouter = require('./controllers/BookingRouter')
 const HistoryRouter = require('./controllers/HistoryRouter')
 const EmailRouter = require('./controllers/EmailRouter.js')
+
+
+
 import cors from 'cors' 
 // import cors from 'cors';
 let app = express();
@@ -38,11 +41,6 @@ app.use('/api/doctorTime', doctorTimeRouter)
 app.use('/api/booking', BookingRouter)
 app.use('/api/history',HistoryRouter)
 app.use('/api/email', EmailRouter)
-
-
-
-
-
 
 let port = process.env.PORT || 6969;
 // Port === undefined => port = 6969

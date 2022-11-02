@@ -29,15 +29,6 @@ const middleware = {
             next()
         })
     },
-    // checkvaluesStatus: (req, res, next) => {
-    //     const idStatus = req.body.idStatus;
-    //     let query3 = `select * from status where idStatus = ${idStatus} and active = 1`;
-    //     connection.query(query3, (err, result3) => {
-    //         if (err) return res.status(400).json({ success: false, message: "Erorr3 check status" ,err});
-    //         if (result3.length === 0) return res.status(200).json({ success: true, message: "Values status empty!!!" })
-    //         next()
-    //     })
-    // },
     checkvaluesSpecialist: (req, res, next) => {
         const idSpecialist = req.body.idSpecialist;
         let query4 = `select * from specialists where idSpecialist = ${idSpecialist} and active = 1`;

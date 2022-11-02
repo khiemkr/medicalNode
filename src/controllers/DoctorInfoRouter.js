@@ -14,11 +14,17 @@ router.post('/add', (req, res) => {
     })
 })
 
-router.get('/getAllDoctor', (req, res) => {
-    let query = `select idStaff,name,image from staff where idRole = 3 `;
-
+router.get('/getAllDoctorFind', (req, res) => { 
+    let query = `select staff.idStaff,name,staff.image,specialists.departmentName from staff,doctor_info,specialists where staff.idStaff=doctor_info.idStaff and specialists.idSpecialist = doctor_info.idSpecialist and idRole = 3 `;
     connection.query(query, (err, result) => {
-        if(err) return res.status(400).json({success: false, message: "Erorr"});
+        if(err) return res.status(400).json({success: false, message: "Erorr",err});
+        return res.status(200).json({success: true, message: "Get all doctor success", result});
+    })
+})
+router.get('/getAllDoctor', (req, res) => { 
+    let query = `select * from staff where idRole = 3 `;
+    connection.query(query, (err, result) => {
+        if(err) return res.status(400).json({success: false, message: "Erorr",err});
         return res.status(200).json({success: true, message: "Get all doctor success", result});
     })
 })

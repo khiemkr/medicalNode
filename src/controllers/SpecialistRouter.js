@@ -67,10 +67,10 @@ router.delete('/delete', (req, res) => {
         })
     })
 }) 
-
+ 
 
 router.get('/getAll', (req, res) => {
-    let query = `select * from specialists`;
+    let query = `select * from specialists where active = 1`;
     connection.query(query, (err, result) => {
         if (err) return res.status(400).json({ success: false, message: "Erorr",err })
         if(result.length <= 0) return res.status(200).json({success: true, message: "Specialist empty"})

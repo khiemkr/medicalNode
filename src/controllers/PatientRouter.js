@@ -3,11 +3,6 @@ const router = express.Router();
 const connection = require('../config/connectDB');
 const bcrypt = require('bcrypt');
 
-
-
-
-// const salt = bcrypt.genSaltSync(saltRounds); 
-
 //Erorr 
 router.post('/add', async (req, res) => {
     const {name, email, password, phoneNumber, address, date, gender} = req.body;
@@ -38,7 +33,7 @@ router.get('/getAll', (req, res) => {
         return res.status(200).json({success: true, message: "Data empty"});
     })
 })
-
+ 
 router.get('/getSingle',  (req, res) => {
     const id =  req.query.idPatient;
 

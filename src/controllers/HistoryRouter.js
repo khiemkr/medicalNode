@@ -38,7 +38,7 @@ router.get('/getAllHistoryPatient', (req, res) => {
                 from booking, examination_hours, patient, doctor_info, staff, doctor_time
                 where booking.idTime = doctor_time.idTime and booking.idPatient = patient.idPatient and
                 booking.idStaff = doctor_info.idStaff and doctor_info.idStaff = staff.idStaff
-                and doctor_time.idTime = examination_hours.idTime and booking.idPatient = ${idPatient} group by idBooking`;
+                and doctor_time.idTime = examination_hours.idTime and booking.active = 0 and booking.idPatient = ${idPatient} group by idBooking`;
     connection.query(query, (err, result) => {  
         console.log(err)
          if (err) return res.status(400).json({ success: false, message: "Erorr get history patient success" })

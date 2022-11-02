@@ -3,10 +3,10 @@ const router = express.Router();
 const connection = require('../config/connectDB');
 
 
-router.post('/add', (req, res) => {
+router.post('/add', (req, res) => { 
     const slotTime = req.body.slotTime;
-    const currentDate = req.body.currentDate;
-    let query = `insert into examination_hours(slotTime,currentDate, active) values('${slotTime}', '${currentDate}',1)`; 
+    // const currentDate = req.body.currentDate;
+    let query = `insert into examination_hours(slotTime, active) values('${slotTime}',1)`; 
     connection.query(query, (err, result) => {
         if(err) return res.status(400).json({success: false, message: "Erorr",currentDate});
         return res.status(200).json({success: true, message: "Add success"});
@@ -31,7 +31,7 @@ router.patch('/edit', (req, res) => {
         })
     })
 })
-
+ 
 router.delete('/delete', (req, res) => {
     let idTime = req.body.idTime;
     let query = `update examination_hours set active = 0 where idTime = ${idTime}`;
